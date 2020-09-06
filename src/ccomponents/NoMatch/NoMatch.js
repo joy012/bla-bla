@@ -8,6 +8,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
       '& > *': {
         margin: theme.spacing(1),
+        height: '100vh'
       }
     },
     link: {
@@ -21,10 +22,10 @@ const NoMatch = () => {
     const classes = useStyles();
     return (
         <div className={classes.root}>
-            <Typography variant="h1" component="h1" style={{textAlign:'center',marginTop: '100px'}}>Post Not Found</Typography>
-            <Typography variant="h3" component="h3" style={{textAlign:'center', marginTop: '20px'}}>Link is Broken or This Post  is Deleted by User</Typography>
+            <Typography variant="h1" component="h1" style={{textAlign:'center',marginTop: '100px',color:'white'}}>Post Not Found</Typography>
+            <Typography variant="h3" component="h3" style={{textAlign:'center', marginTop: '20px', color:'white'}}>Link is Broken or This Post  is Deleted by User</Typography>
             <Link className={classes.link} to='/'>
-                <Button variant="contained" color="primary">Go Back</Button>
+                <Button variant="contained" color="secondary">Go Back</Button>
             </Link>
         </div>
     );
