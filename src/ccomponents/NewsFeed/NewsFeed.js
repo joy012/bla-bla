@@ -13,7 +13,7 @@ const NewsFeed = () => {
 
     return (
         <div>
-            <Typography variant='h3' style={{textAlign: 'center', marginTop: '40px',color:"white"}}>NewsFeed</Typography>
+            <Typography variant='h2' style={{textAlign: 'center', marginTop: '40px',color:"white"}}>NewsFeed</Typography>
             <Container maxWidth="sm" style={{maxWidth: '850px'}}>
                 {
                     posts.map(post => <Post key={post.id} post={post} btnText={true}></Post>)

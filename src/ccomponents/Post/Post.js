@@ -13,7 +13,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import CommentIcon from '@material-ui/icons/Comment';
 import { Button } from '@material-ui/core';
-import userName from '../fakeData/fakeData.js'
+import userName from '../../fakeData/fakeData.js';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -37,34 +37,40 @@ const useStyles = makeStyles((theme) => ({
     cardText: {
         textAlign: "center"
     },
-    cardContent: { 
-        padding: '0 7%', 
-        marginTop: '20px' 
+    cardContent: {
+        padding: '0 7%',
+        marginTop: '20px'
     },
-    cardAction: { 
-        position: 'relative', 
-        padding: '8px 24px' 
+    cardAction: {
+        position: 'relative',
+        padding: '8px 24px'
     },
-    btn: { 
+    btn: {
         position: 'absolute',
-        right: '50px', 
-        bottom: '12px', 
-        backgroundColor: 'crimson',
+        right: '50px',
+        bottom: '20px',
         color: 'white',
         "&:hover": {
             backgroundColor: 'indianRed'
+        },
+        "&:focus": {
+            outline: 'none'
         }
-    }
+    },
+        focusFrame: {
+            "&:focus": {
+                outline: 'none'
+            }
+        }
 }));
 
 
 const Post = (props) => {
     const classes = useStyles();
-
     const { id, title, body } = props.post;
     const btnText = props.btnText;
 
-    // generate user name
+    //  get user name from fake data
     const [usersName, setUsersName] = useState(userName);
 
     // generate random date posting date
@@ -82,14 +88,15 @@ const Post = (props) => {
         }
         return `${monthName[month - 1]} ${day}, ${year}`;
     }
-    const handleButton = btnText ? 
-                <Link to={`/post/${id}`}>
-                    <Button className={classes.btn} variant="contained">See more</Button> 
-                </Link>
-                :<Link to={`/home`}>
-                    <Button className={classes.btn}variant="contained">See less</Button> 
-                </Link>
+    const text = btnText ? 'See more' : 'See less';
+    const linkPath = btnText ? `/post/${id}` : '/home';
+    const handleButton = <Link to={linkPath}>
+                            <Button className={classes.btn} variant="contained">{text}</Button>
+                        </Link>
 
+    // handle love react 
+    const [loveColor, setLoveColor] = useState('');
+    const loveReact = () => setLoveColor(loveColor ? '' : 'crimson');
     return (
         <Card className={classes.root}>
             <CardHeader
@@ -115,15 +122,15 @@ const Post = (props) => {
                 </Typography>
             </CardContent>
             <CardActions className={classes.cardAction} disableSpacing>
-                <IconButton aria-label="add to favorites">
-                    <FavoriteIcon style={{color:'crimson'}} />
+                <IconButton onClick={loveReact} style={{ color: `${loveColor}` }} className={classes.focusFrame} aria-label="add to favorites">
+                    <FavoriteIcon />
                 </IconButton>
-                <IconButton aria-label="share">
-                    <ShareIcon style={{color:'dodgerBlue'}} />
+                <IconButton className={classes.focusFrame} aria-label="share">
+                    <ShareIcon style={{ color: 'dodgerBlue' }} />
                 </IconButton>
-                <IconButton aria-label="comment">
+                <IconButton className={classes.focusFrame} aria-label="comment">
                     <Link to={`/post/${id}`}>
-                        <CommentIcon style={{verticalAlign: 'bottom', color:'grey'}} color='secondary' />
+                        <CommentIcon style={{ color: 'grey'}} color='secondary' />
                     </Link>
                 </IconButton>
                 {handleButton}

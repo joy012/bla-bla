@@ -1,14 +1,16 @@
 import React from 'react';
 import './App.css';
-import Header from './ccomponents/Header/Header';
-import NewsFeed from './ccomponents/NewsFeed/NewsFeed';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
+import Header from './ccomponents/Header/Header';
+import NewsFeed from './ccomponents/NewsFeed/NewsFeed';
 import PostDetail from './ccomponents/PostDetail/PostDetail';
 import NoMatch from './ccomponents/NoMatch/NoMatch';
+import List from './ccomponents/List/List';
+
 
 function App() {
   return (
@@ -21,6 +23,9 @@ function App() {
           </Route>
           <Route path='/post/:userId'>
             <PostDetail />
+          </Route>
+          <Route path="/friends">
+            <List></List>
           </Route>
           <Route exact path="/">
             <NewsFeed />

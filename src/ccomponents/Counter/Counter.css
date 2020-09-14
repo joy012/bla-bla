@@ -1,0 +1,15 @@
+.container-fluid{
+    border-radius: 30px;
+}
+.bg-counter{
+    background: #00BFFF;
+}
+.friend{
+    border-bottom: 1px solid white;
+}
+.profile-img{
+    width: 60px;
+    height: 60px;
+    border: 4px solid white;
+    border-radius: 50%;
+}

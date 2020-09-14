@@ -4,16 +4,17 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import logo from '../../image/logo2.png';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import { Link } from "react-router-dom";
+import HomeIcon from '@material-ui/icons/Home';
 
 const useStyles = makeStyles((theme) => ({
     appBarColor: {
@@ -137,6 +138,23 @@ const Header = () => {
             onClose={handleMobileMenuClose}
         >
             <MenuItem>
+                <IconButton aria-label="show 100 new posts" color="inherit">
+                    <Link to='/'>
+                        <Badge badgeContent={100} color="secondary">    
+                            <HomeIcon style={{color:'black'}} />    
+                        </Badge>
+                    </Link>
+                </IconButton>
+                <IconButton aria-label="show 15 new friend suggestion" color="inherit">
+                    <Link to='/friends'>
+                        <Badge badgeContent={'15+'} color="secondary">    
+                            <PersonAddIcon style={{color:'black'}} />    
+                        </Badge>
+                    </Link>
+                </IconButton>
+                <p>Add Friend</p>
+            </MenuItem>
+            <MenuItem>
                 <IconButton aria-label="show 4 new mails" color="inherit">
                     <Badge badgeContent={4} color="secondary">
                         <MailIcon />
@@ -174,21 +192,22 @@ const Header = () => {
                         <img className={classes.logo} src={logo} alt="..." />
                     </div>
                     <Typography variant='h5' style={{ marginLeft: '10px' }}>Panda Buddy</Typography>
-                    <div className={classes.search}>
-                        <div className={classes.searchIcon}>
-                            <SearchIcon />
-                        </div>
-                        <InputBase
-                            placeholder="Search…"
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}
-                            inputProps={{ 'aria-label': 'search' }}
-                        />
-                    </div>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
+                    <IconButton aria-label="show 100 new posts" color="inherit">
+                        <Link to='/'>
+                            <Badge style=   {{position: 'relative', bottom:'5px'}} badgeContent={100} color="secondary">    
+                                <HomeIcon style={{color:'white'}} />    
+                            </Badge>
+                        </Link>
+                    </IconButton>
+                    <IconButton aria-label="show 15 new friend suggestion" color="inherit">
+                        <Link to='/friends'>
+                            <Badge style={{position: 'relative', bottom:'5px'}} badgeContent={'15+'} color="secondary">    
+                                <PersonAddIcon style={{color:'white'}} />    
+                            </Badge>
+                        </Link>
+                        </IconButton>
                         <IconButton aria-label="show 4 new mails" color="inherit">
                             <Badge badgeContent={4} color="secondary">
                                 <MailIcon />

@@ -27,7 +27,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Comment = (props) => {
     const classes = useStyles();
-    const { name, id, body } = props.comment;
+    const { name, body } = props.comment;
+    
     // random date generator
     const randomDate = (start = new Date(2018, 0, 1), end = new Date()) => {
         const monthName = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -45,7 +46,7 @@ const Comment = (props) => {
         return `${monthName[month - 1]} ${day}, ${year}`;
     }
 
-    // generate 2 digit id
+    // generate 2 digit id for commenter random image api
     const randomId = () => Math.round(Math.random() * 99) ;
 
     return (
