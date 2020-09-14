@@ -144,7 +144,10 @@ const Header = () => {
                             <HomeIcon style={{color:'black'}} />    
                         </Badge>
                     </Link>
+                    <p>Home</p>
                 </IconButton>
+            </MenuItem>
+            <MenuItem>
                 <IconButton aria-label="show 15 new friend suggestion" color="inherit">
                     <Link to='/friends'>
                         <Badge badgeContent={'15+'} color="secondary">    

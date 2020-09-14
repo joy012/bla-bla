@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
         position: 'absolute',
         right: '50px',
         bottom: '20px',
-        color: 'white',
+        color: 'crimson',
         "&:hover": {
             backgroundColor: 'indianRed'
         },
